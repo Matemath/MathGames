@@ -4,26 +4,30 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | MathGames</title>
-  </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1" style="width: 1920px; height: 1080px; background: #FFFFFF"></canvas>
-    <script src="Build/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js"></script>
-    <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-
-        var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.style.position = "fixed";
-
-        document.body.style.textAlign = "left";
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #FFFFFF;
       }
 
+      #unity-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: #FFFFFF;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+    <script src="Build/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js"></script>
+    <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/266293791f253a17ecf38653507efd88.data",
         frameworkUrl: "Build/be31ea61850571b15c928a6ccd8fecc3.framework.js",
@@ -32,8 +36,6 @@
         companyName: "Matemath",
         productName: "MathGames",
         productVersion: "1.1",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
   </body>
