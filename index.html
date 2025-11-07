@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | MathGames</title>
+    <title>Unity Web Player | MathGames</title>
     <style>
       html, body {
         margin: 0;
@@ -13,6 +13,7 @@
         height: 100%;
         overflow: hidden;
         background: #FFFFFF;
+        text-align: center;
       }
 
       #unity-canvas {
@@ -26,16 +27,27 @@
   <body>
     <canvas id="unity-canvas" tabindex="-1"></canvas>
 
-    <script src="Build/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js"></script>
+    <script src="Build/d75844ef67bc5bd6550e1ce406141d9d.loader.js"></script>
     <script>
+      // Detectar si es móvil y ajustar el viewport
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.head.appendChild(meta);
+      }
+
+      // Crear instancia de Unity
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/266293791f253a17ecf38653507efd88.data",
-        frameworkUrl: "Build/be31ea61850571b15c928a6ccd8fecc3.framework.js",
-        codeUrl: "Build/ad6419661313b5261f5f75ba60dbab35.wasm",
+        dataUrl: "Build/0132443f13bf6f3aad8eb0084292efdb.data",
+        frameworkUrl: "Build/f3c1f6c7d1a1a3b82c01577bc68c29ff.framework.js",
+        codeUrl: "Build/71c49f25bc5b9f2c455de937f7b002b5.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Matemath",
         productName: "MathGames",
-        productVersion: "1.1",
+        productVersion: "1.2",
+      }).catch((message) => {
+        alert(message);
       });
     </script>
   </body>
